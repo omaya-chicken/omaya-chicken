@@ -41,31 +41,17 @@ async function save(){const r=await fetch("/api/menu",{method:"POST",body:JSON.s
 render();
 fetch("/api/menu").then(r=>r.ok?r.json():null).then(d=>{if(d&&d.s&&d.s.length){S.s=d.s;cur=0;if(!adm)render()}}).catch(()=>{});
 </script></body></html>
-</script>
 <script>
-  // ضع كلمة المرور الخاصة بك هنا
-  const ADMIN_PASSWORD = "123";
-
-  // اعتراض طلبات الـ fetch الخاصة بالموقع لتشغيلها محلياً على GitHub Pages
-  const originalFetch = window.fetch;
-  window.fetch = async function(url, options) {
-    if (url === '/api/menu') {
-      if (options && options.method === 'POST') {
-        const body = JSON.parse(options.body);
-        if (!body.pw || body.pw !== ADMIN_PASSWORD) {
-          alert("كلمة السر خاطئة!");
-          return new Response("no", { status: 401 });
-        }
-        localStorage.setItem('omaya_menu', JSON.stringify(body.data));
-        alert("تم الحفظ بنجاح!");
-        return new Response("ok");
-      } else {
-        const data = localStorage.getItem('omaya_menu') || "null";
-        return new Response(data, {
-          headers: { "content-type": "application/json" }
-        });
-      }
+  // جلب البيانات مباشرة من الصفحة بدون الحاجة لسيرفر
+  try {
+    const rawData = JSON.parse(document.getElementById('d').textContent);
+    if (rawData && rawData.s) {
+      S = rawData;
+      render();
     }
-    return originalFetch.apply(this, arguments);
-  };
+  } catch(e) {
+    console.log("Error loading menu data");
+  }
 </script>
+</body>
+</html>
