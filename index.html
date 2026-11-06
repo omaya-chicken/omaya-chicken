@@ -41,3 +41,19 @@ async function save(){const r=await fetch("/api/menu",{method:"POST",body:JSON.s
 render();
 fetch("/api/menu").then(r=>r.ok?r.json():null).then(d=>{if(d&&d.s&&d.s.length){S.s=d.s;cur=0;if(!adm)render()}}).catch(()=>{});
 </script></body></html>
+<script>
+  // ضع كلمة المرور الخاصة بك هنا بين العلامتين
+  const ADMIN_PASSWORD = "m";
+
+  // دالة التحقق من كلمة السر عند محاولة التعديل
+  function verifyAdminPassword() {
+    const pw = prompt("الرجاء إدخال كلمة سر لوحة التحكم:");
+    if (pw === ADMIN_PASSWORD) {
+      alert("تم التحقق بنجاح!");
+      return true;
+    } else {
+      alert("كلمة السر خاطئة!");
+      return false;
+    }
+  }
+</script>
