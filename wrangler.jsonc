@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "omaya-chicken",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-11-07",
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  "kv_namespaces": [ { "binding": "MENU_KV", "id": "REPLACE_WITH_YOUR_KV_NAMESPACE_ID" } ]
+}
