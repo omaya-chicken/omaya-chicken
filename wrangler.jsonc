@@ -4,5 +4,5 @@
   "main": "src/worker.js",
   "compatibility_date": "2026-11-07",
   "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
-  "kv_namespaces": [ { "binding": "MENU_KV", "id": "REPLACE_WITH_YOUR_KV_NAMESPACE_ID" } ]
+  "kv_namespaces": [ { "binding": "MENU_KV", "id": "c4559c52bca446c2ab3f63d57d941968" } ]
 }
